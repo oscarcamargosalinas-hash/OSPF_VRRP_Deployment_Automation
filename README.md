@@ -56,9 +56,9 @@ To test stability, I simulated a failover and convergence event by failing R1, a
 
 Data Plane Recovery: During a continuous ICMP request/reply stream, traffic recovered after the VRRP/OSPF reconvergence event. During failover, the available router immediately takes the shared virtual MAC address, and SW2 tags the traffic according to the static VLAN on the access port.
 
-<img width="319" height="156" alt="Image" src="https://github.com/user-attachments/assets/07a96083-2155-4312-85d4-ecc3cfa299d4" />
-
 Drop Window & Latency Metrics: Pings recovered quickly as seen in the capture below, the path cutover results in a minor gap, with the first packet returning through the backup path before stabilizing back down to normal flow.
+
+<img width="319" height="156" alt="Image" src="https://github.com/user-attachments/assets/07a96083-2155-4312-85d4-ecc3cfa299d4" />
 
 Route Updates Analysis: For the route updates tracking example, I opted to use a custom parsing collector that I created, chosen mainly for its direct compatibility with Cisco IOSv models and clean parsing capabilities: Available here at Cisco Baseline Checker (https://github.com/oscarcamargosalinas-hash/Cisco_baseline_checker). This allowed me to correlate easily exactly how the R3 interface went down via a clean JSON state difference output.
 
