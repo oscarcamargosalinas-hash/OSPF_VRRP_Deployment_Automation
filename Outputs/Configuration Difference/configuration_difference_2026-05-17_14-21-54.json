@@ -1,0 +1,17 @@
+{
+    "modified_values": {},
+    "deleted_items": {
+        "R3": {
+            "routes": {
+                "connected": {
+                    "GigabitEthernet0/1": ">DELETED VALUE<"
+                }
+            },
+            "ospf": {
+                "interface": {
+                    "GigabitEthernet0/1": ">DELETED VALUE<"
+                }
+            }
+        }
+    }
+}

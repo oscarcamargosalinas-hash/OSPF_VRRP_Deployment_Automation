@@ -1,0 +1,48 @@
+- name: Deploy router configs
+  hosts: devices
+  gather_facts: false
+
+  tasks:
+    - name: Configure VLANs
+      cisco.ios.ios_config:
+        lines: "{{ vlan_definition }}"
+      when: vlan_definition is defined
+
+    - name: Configure base interfaces
+      cisco.ios.ios_config:
+        parents:
+          - "interface {{ item.name }}"
+        lines: "{{ item.lines }}"
+      loop: "{{ interfaces | default([]) }}"
+
+    - name: Configure VLAN subinterfaces and VRRP
+      cisco.ios.ios_config:
+        parents:
+          - "interface {{ item.name }}"
+        lines: "{{ item.lines }}"
+      loop: "{{ vrrp_interfaces | default([]) }}"
+
+    - name: Configure OSPF
+      cisco.ios.ios_config:
+        parents:
+          - "router ospf {{ ospf_process }}"
+        lines: "{{ ospf_lines }}"
+      when: ospf_lines is defined
+    
+    - name: Commands to check OSPF 
+      cisco.ios.ios_command:
+        commands:
+          - show ip ospf neighbor 
+      register: command_result
+      when: ospf_lines is defined
+
+    - name: Print OSPF result
+      ansible.builtin.debug:
+        var: command_result.stdout_lines
+      when: command_result is defined
+      
+        
+    - name: Save running-config to startup-config
+      cisco.ios.ios_config:
+        save_when: modified
+

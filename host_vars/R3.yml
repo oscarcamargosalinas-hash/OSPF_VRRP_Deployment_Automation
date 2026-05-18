@@ -1,0 +1,28 @@
+interfaces:
+  - name: GigabitEthernet0/0
+    lines:
+      - ip address 10.0.1.1 255.255.255.0
+      - no shutdown
+      - ip ospf hello-interval 1
+      - ip ospf dead-interval 4
+  - name: GigabitEthernet0/2
+    lines:
+      - ip address 10.0.2.1 255.255.255.0
+      - no shutdown
+      - ip ospf hello-interval 1
+      - ip ospf dead-interval 4
+  - name: GigabitEthernet0/1
+    lines:
+      - ip address 10.0.3.254 255.255.255.0
+      - no shutdown
+
+ospf_process: 3
+
+ospf_lines:
+  - router-id 3.3.3.3
+  - no passive-interface GigabitEthernet0/0
+  - no passive-interface GigabitEthernet0/2
+  - passive-interface GigabitEthernet0/1
+  - network 10.0.1.0 0.0.0.255 area 0
+  - network 10.0.2.0 0.0.0.255 area 0
+  - network 10.0.3.0 0.0.0.255 area 1

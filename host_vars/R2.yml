@@ -1,0 +1,47 @@
+interfaces:
+  - name: GigabitEthernet0/0
+    lines:
+      - ip address 172.16.2.1 255.255.255.0
+      - no shutdown
+      - ip ospf hello-interval 1
+      - ip ospf dead-interval 4
+
+  - name: GigabitEthernet0/2
+    lines:
+      - ip address 10.0.1.2 255.255.255.0
+      - no shutdown
+  - name: GigabitEthernet0/3
+    lines:
+      - no shutdown  
+
+vrrp_interfaces:
+  - name: GigabitEthernet0/3.5
+    lines:
+      - encapsulation dot1Q 5
+      - ip address 192.168.5.251 255.255.255.0
+      - vrrp 5 ip 192.168.5.254
+      - vrrp 5 priority 100
+      - vrrp 5 preempt delay minimum 10
+      - no shutdown
+  - name: GigabitEthernet0/3.1
+    lines:
+      - encapsulation dot1Q 10
+      - ip address 192.168.1.251 255.255.255.0
+      - vrrp 10 ip 192.168.1.254
+      - vrrp 10 priority 110
+      - vrrp 10 preempt delay minimum 10
+      - no shutdown
+ospf_process: 2
+
+ospf_lines:
+  - router-id 2.2.2.2
+  - no passive-interface GigabitEthernet0/0
+  - no passive-interface GigabitEthernet0/2
+  - passive-interface GigabitEthernet0/3.5
+  - passive-interface GigabitEthernet0/3.1
+  - passive-interface GigabitEthernet0/3
+  - passive-interface GigabitEthernet0/1
+  - network 10.0.1.0 0.0.0.255 area 0
+  - network 192.168.5.0 0.0.0.255 area 0
+  - network 192.168.1.0 0.0.0.255 area 0
+  - network 172.16.2.0 0.0.0.255 area 0

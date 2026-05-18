@@ -1,0 +1,184 @@
+{
+    "R1": {
+        "interfaces": {
+            "GigabitEthernet0/0.5": "192.168.5.250",
+            "GigabitEthernet0/0.10": "192.168.1.250",
+            "GigabitEthernet0/1": "172.16.2.2",
+            "GigabitEthernet0/2": "192.168.10.231",
+            "GigabitEthernet0/3": "10.0.2.2"
+        },
+        "routes": {
+            "connected": {
+                "GigabitEthernet0/3": [
+                    "10.0.2.0/24",
+                    "10.0.2.2/32"
+                ],
+                "GigabitEthernet0/1": [
+                    "172.16.2.0/24",
+                    "172.16.2.2/32"
+                ],
+                "GigabitEthernet0/0.10": [
+                    "192.168.1.0/24",
+                    "192.168.1.250/32"
+                ],
+                "GigabitEthernet0/0.5": [
+                    "192.168.5.0/24",
+                    "192.168.5.250/32"
+                ],
+                "GigabitEthernet0/2": [
+                    "192.168.10.0/24",
+                    "192.168.10.231/32"
+                ]
+            }
+        },
+        "ospf": {
+            "process_id": "1",
+            "router_id": "1.1.1.1",
+            "interface": {
+                "GigabitEthernet0/0.5": [
+                    "ip address :192.168.5.250/24",
+                    "area :0",
+                    "cost :1"
+                ],
+                "GigabitEthernet0/0.10": [
+                    "ip address :192.168.1.250/24",
+                    "area :0",
+                    "cost :1"
+                ],
+                "GigabitEthernet0/1": [
+                    "ip address :172.16.2.2/24",
+                    "area :0",
+                    "cost :1"
+                ],
+                "GigabitEthernet0/3": [
+                    "ip address :10.0.2.2/24",
+                    "area :0",
+                    "cost :1"
+                ]
+            }
+        },
+        "bgp": {
+            "router_id": [],
+            "local_as": [],
+            "neighbours": {}
+        }
+    },
+    "R2": {
+        "interfaces": {
+            "GigabitEthernet0/0": "172.16.2.1",
+            "GigabitEthernet0/1": "192.168.10.232",
+            "GigabitEthernet0/2": "10.0.1.2",
+            "GigabitEthernet0/3.1": "192.168.1.251",
+            "GigabitEthernet0/3.5": "192.168.5.251"
+        },
+        "routes": {
+            "connected": {
+                "GigabitEthernet0/2": [
+                    "10.0.1.0/24",
+                    "10.0.1.2/32"
+                ],
+                "GigabitEthernet0/0": [
+                    "172.16.2.0/24",
+                    "172.16.2.1/32"
+                ],
+                "GigabitEthernet0/3.1": [
+                    "192.168.1.0/24",
+                    "192.168.1.251/32"
+                ],
+                "GigabitEthernet0/3.5": [
+                    "192.168.5.0/24",
+                    "192.168.5.251/32"
+                ],
+                "GigabitEthernet0/1": [
+                    "192.168.10.0/24",
+                    "192.168.10.232/32"
+                ]
+            }
+        },
+        "ospf": {
+            "process_id": "2",
+            "router_id": "2.2.2.2",
+            "interface": {
+                "GigabitEthernet0/3.5": [
+                    "ip address :192.168.5.251/24",
+                    "area :0",
+                    "cost :1"
+                ],
+                "GigabitEthernet0/3.1": [
+                    "ip address :192.168.1.251/24",
+                    "area :0",
+                    "cost :1"
+                ],
+                "GigabitEthernet0/0": [
+                    "ip address :172.16.2.1/24",
+                    "area :0",
+                    "cost :1"
+                ],
+                "GigabitEthernet0/2": [
+                    "ip address :10.0.1.2/24",
+                    "area :0",
+                    "cost :1"
+                ]
+            }
+        },
+        "bgp": {
+            "router_id": [],
+            "local_as": [],
+            "neighbours": {}
+        }
+    },
+    "R3": {
+        "interfaces": {
+            "GigabitEthernet0/0": "10.0.1.1",
+            "GigabitEthernet0/1": "10.0.3.1",
+            "GigabitEthernet0/2": "10.0.2.1",
+            "GigabitEthernet0/3": "192.168.10.233"
+        },
+        "routes": {
+            "connected": {
+                "GigabitEthernet0/0": [
+                    "10.0.1.0/24",
+                    "10.0.1.1/32"
+                ],
+                "GigabitEthernet0/2": [
+                    "10.0.2.0/24",
+                    "10.0.2.1/32"
+                ],
+                "GigabitEthernet0/1": [
+                    "10.0.3.0/24",
+                    "10.0.3.1/32"
+                ],
+                "GigabitEthernet0/3": [
+                    "192.168.10.0/24",
+                    "192.168.10.233/32"
+                ]
+            }
+        },
+        "ospf": {
+            "process_id": "3",
+            "router_id": "3.3.3.3",
+            "interface": {
+                "GigabitEthernet0/2": [
+                    "ip address :10.0.2.1/24",
+                    "area :0",
+                    "cost :1"
+                ],
+                "GigabitEthernet0/0": [
+                    "ip address :10.0.1.1/24",
+                    "area :0",
+                    "cost :1"
+                ],
+                "GigabitEthernet0/1": [
+                    "ip address :10.0.3.1/24",
+                    "area :1",
+                    "cost :1"
+                ]
+            }
+        },
+        "bgp": {
+            "router_id": [],
+            "local_as": [],
+            "neighbours": {}
+        }
+    }
+}

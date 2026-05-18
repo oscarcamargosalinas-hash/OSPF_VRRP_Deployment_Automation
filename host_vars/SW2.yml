@@ -1,0 +1,35 @@
+interfaces:
+  - name: E0/0
+    lines:
+      - no shutdown 
+      - switchport trunk encapsulation dot1q
+      - switchport mode trunk
+      - switchport trunk allowed vlan 5,10
+      - spanning-tree portfast trunk 
+
+  - name: E0/2
+    lines:
+      - no shutdown 
+      - switchport trunk encapsulation dot1q
+      - switchport mode trunk
+      - switchport trunk allowed vlan 5,10
+      - spanning-tree portfast trunk
+
+  - name: E0/1
+    lines:
+      - no shutdown  
+      - switchport mode access
+      - switchport access vlan 10
+      - spanning-tree portfast
+
+  - name: E0/3
+    lines:
+      - no shutdown  
+      - switchport mode access
+      - switchport access vlan 5
+      - spanning-tree portfast
+      
+
+vlan_definition:
+  - vlan 10
+  - vlan 5
