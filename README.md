@@ -3,6 +3,7 @@
 <img width="2449" height="1220" alt="Image" src="https://github.com/user-attachments/assets/be313ff5-ee5f-4feb-8051-16d203723e9b" />
 
 Overall Architecture
+
 The OSPF Cisco infrastructure deployed using Ansible consists of a 2-area network topology (Backbone Area 0 and Area 1).
 
 - Backbone Area 0: Consists of 2 routers working in High Availability (HA) and one router acting as an Area Border Router (ABR) for Area 1.
