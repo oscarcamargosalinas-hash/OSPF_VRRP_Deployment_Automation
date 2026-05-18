@@ -31,7 +31,7 @@ Core Automation Components
 
 By keeping the configuration fully in code, it allows us to easily track changes and version updates to VRRP, OSPF, and physical interfaces as our infrastructure grows in size.
 
-State Tracking Note: The framework includes an Output section where a Nornir/Netmiko collector gathers all live information from the 3 routers and organizes them into structured JSON for easier management. This helps track our existing configuration of OSPF, BGP, Routes, and Interfaces. This execution block also includes a configuration difference task used post deployment during validation tests.
+State Tracking Note: I have included an Output section where a Nornir/Netmiko collector gathers all live information from the 3 routers and organizes them into structured JSON for easier management. This helps track our existing configuration of OSPF, BGP, Routes, and Interfaces. This execution block also includes a configuration difference task used post deployment during validation tests.
 
 Post-Deployment Validation
 To ensure deployment success, I ran a packet capture and state verification testing 2 core variables:
@@ -48,7 +48,8 @@ Data Plane Recovery: During a continuous ICMP request/reply stream, traffic reco
 
 Drop Window & Latency Metrics: Pings recovered quickly as seen in the capture below, the path cutover results in a minor gap, with the first packet returning through the backup path before stabilizing back down to normal flow.
 
-Route Updates Analysis: For the route updates tracking example, I opted to use a custom parsing collector that I created, chosen mainly for its direct compatibility with Cisco IOSv models and clean parsing capabilities: Available here at Cisco Baseline Checker. This allowed me to correlate easily exactly how the R3 interface went down via a clean JSON state difference output.
+Route Updates Analysis: For the route updates tracking example, I opted to use a custom parsing collector that I created, chosen mainly for its direct compatibility with Cisco IOSv models and clean parsing capabilities: Available here at Cisco Baseline Checker (https://github.com/oscarcamargosalinas-hash/Cisco_baseline_checker). This allowed me to correlate easily exactly how the R3 interface went down via a clean JSON state difference output.
+<img width="344" height="230" alt="Image" src="https://github.com/user-attachments/assets/d7250303-4711-4aed-9eec-eaf6ceaa2c47" />
 
 Capabilities & Limitations
 Scalability Properties
