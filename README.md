@@ -39,17 +39,27 @@ To ensure deployment success, I ran a packet capture and state verification test
 1. Neighbor Establishment & Control Plane Flow
 I used the Ansible playbook to pass show ip ospf neighbor to confirm operational adjacency status, while also running packet captures on the neighboring links.
 
+<img width="959" height="452" alt="Image" src="https://github.com/user-attachments/assets/e0a481e5-d868-4d97-90ff-8e3e3b9c6609" />
+
 The idea with the second option was to check for raw OSPF messages such as Hello packets, DB Descriptions, LS Updates, and LS ACK. This verified directly that the live communication flow was matching OSPF V2 communication standards.
 
 2. Failover, Convergence, & Route Updates
+<img width="2449" height="1220" alt="Image" src="https://github.com/user-attachments/assets/f76e6712-61f9-4129-92fd-a3625716621a" />
+
 To test stability, I simulated a failover and convergence event by failing R1, alongside testing a route update scenario for when R3 experiences a link down event.
 
+<img width="935" height="374" alt="Image" src="https://github.com/user-attachments/assets/f99c06dc-6930-4f22-ac12-df74a5decaef" />
+
 Data Plane Recovery: During a continuous ICMP request/reply stream, traffic recovered after the VRRP/OSPF reconvergence event. During failover, the available router immediately takes the shared virtual MAC address, and SW2 tags the traffic according to the static VLAN on the access port.
+
+<img width="319" height="156" alt="Image" src="https://github.com/user-attachments/assets/07a96083-2155-4312-85d4-ecc3cfa299d4" />
 
 Drop Window & Latency Metrics: Pings recovered quickly as seen in the capture below, the path cutover results in a minor gap, with the first packet returning through the backup path before stabilizing back down to normal flow.
 
 Route Updates Analysis: For the route updates tracking example, I opted to use a custom parsing collector that I created, chosen mainly for its direct compatibility with Cisco IOSv models and clean parsing capabilities: Available here at Cisco Baseline Checker (https://github.com/oscarcamargosalinas-hash/Cisco_baseline_checker). This allowed me to correlate easily exactly how the R3 interface went down via a clean JSON state difference output.
+
 <img width="344" height="230" alt="Image" src="https://github.com/user-attachments/assets/d7250303-4711-4aed-9eec-eaf6ceaa2c47" />
+
 
 Capabilities & Limitations
 Scalability Properties
