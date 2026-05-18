@@ -1,4 +1,4 @@
-Multi-Area OSPF & A-A VRRP Deployment Automation
+**Multi-Area OSPF & A-A VRRP Deployment Automation**
 
 <img width="2449" height="1220" alt="Image" src="https://github.com/user-attachments/assets/be313ff5-ee5f-4feb-8051-16d203723e9b" />
 
