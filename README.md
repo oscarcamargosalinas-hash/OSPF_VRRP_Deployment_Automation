@@ -37,11 +37,15 @@ Post-Deployment Validation
 To ensure deployment success, I ran a packet capture and state verification testing 2 core variables:
 
 1. Neighbor Establishment & Control Plane Flow
-I used the Ansible playbook to pass show ip ospf neighbor to confirm operational adjacency status, while also running packet captures on the neighboring links.
+I used the Ansible playbook to pass show ip ospf neighbor to confirm operational adjacency status
+
+<img width="761" height="440" alt="Image" src="https://github.com/user-attachments/assets/ed06338c-a8a4-4289-afe7-83e3494b5f16" />
+
+I have also run packet captures on the neighboring links. The idea with this second option was to check for raw OSPF messages such as Hello packets, DB Descriptions, LS Updates, and LS ACK.
 
 <img width="959" height="452" alt="Image" src="https://github.com/user-attachments/assets/e0a481e5-d868-4d97-90ff-8e3e3b9c6609" />
 
-The idea with the second option was to check for raw OSPF messages such as Hello packets, DB Descriptions, LS Updates, and LS ACK. This verified directly that the live communication flow was matching OSPF V2 communication standards.
+ This verified directly that the live communication flow was matching OSPF V2 communication standards.
 
 2. Failover, Convergence, & Route Updates
 <img width="2449" height="1220" alt="Image" src="https://github.com/user-attachments/assets/f76e6712-61f9-4129-92fd-a3625716621a" />
