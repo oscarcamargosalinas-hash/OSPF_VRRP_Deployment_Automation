@@ -1,6 +1,6 @@
 Multi-Area OSPF & A-A VRRP Deployment Automation
 
-![Topology](Pictures/OSPF%20LAB.png)
+<img width="2449" height="1220" alt="Image" src="https://github.com/user-attachments/assets/be313ff5-ee5f-4feb-8051-16d203723e9b" />
 
 Overall Architecture
 The OSPF Cisco infrastructure deployed using Ansible consists of a 2-area network topology (Backbone Area 0 and Area 1).
